@@ -1,5 +1,8 @@
 # wx_modal
-微信小程序自定义Modal ， 使用rich-text生成
+**微信小程序自定义Modal ， 使用rich-text生成**
+
+**项目中开始使用微信提供的wx.Modal ，当从a页面跳转到b页面，由于a
+页面有异步操作，会造成b页面无故弹出错误提示，本案例只是简单封装，方便使用**
 
 ![https://github.com/fancaixia/wx_modal/blob/master/pic/modal.png](https://github.com/fancaixia/wx_modal/blob/master/pic/modal.png)
 
