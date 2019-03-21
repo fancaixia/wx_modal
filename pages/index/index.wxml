@@ -2,6 +2,6 @@
 
   <text>我是index页面</text>
 
-  <rich-text nodes="{{nodes}}" wx:if="{{shadowFlag}}" bindtap="closeModal"></rich-text>
+  <rich-text nodes="{{nodes}}" wx:if="{{shadowFlag}}" bindtap="closeShadow"></rich-text>
 
 </view>
