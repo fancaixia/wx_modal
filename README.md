@@ -6,15 +6,19 @@
 
 ![https://github.com/fancaixia/wx_modal/blob/master/pic/modal.png](https://github.com/fancaixia/wx_modal/blob/master/pic/modal.png)
 
+###### 显示模态框：utils.openShadow(this,text)   
+ - 第一个参数：当前作用域  
+- 第二个参数：提示信息, 可不传默认为(" 网络异常！请稍后重试 "） 
+###### 关闭模态框： utils.closeShadow(this);
+
 ###### wxml文件
 ```
- <rich-text nodes="{{nodes}}" wx:if="{{shadowFlag}}" bindtap="closeModal">
+ <rich-text nodes="{{nodes}}" wx:if="{{shadowFlag}}" bindtap="closeShadow">
 </rich-text>
 ```
 ###### js 文件
 ```
 let  utils = require('../../utils/utils.js')
-
 Page({
   data: {
 
@@ -22,13 +26,12 @@ Page({
   onLoad(){
     //定时器延迟  模拟查询数据库返回信息
     setTimeout(() => {
-      utils.openShadow(this, true)
+      utils.openShadow(this)
     }, 1000)
-
   },
   //点击模态框关闭
-  closeModal(){
-    utils.closeModal(this);
+  closeShadow(){
+    utils.closeShadow(this);
   },
 
 })
@@ -82,28 +85,15 @@ function setnodes(text){
     }]
   }]
 }
-
-  //打开模态框
-  // 1.第一个参数：当前作用域  
-  // 2.第二个参数：布尔值控制模态框显示与隐藏
-  // 3.第三个参数为模态框提示信息  可不传
-const openShadow = (that, flag, text ="网络异常！请稍后重试")=>{
-    
-    if (flag){
+//显示模态框
+const openShadow = (that, text ="网络异常！请稍后重试")=>{
       that.setData({
         shadowFlag: true,
         nodes: setnodes(text),
       })
-    }else{
-      that.setData({
-        shadowFlag: false,
-        nodes: [],
-      })
-    }
-    
-  }
+}
 //关闭模态框
-const closeModal = (that)=>{
+const closeShadow= (that)=>{
     that.setData({
       shadowFlag: false,
       nodes: [],
@@ -112,6 +102,6 @@ const closeModal = (that)=>{
 
   module.exports = {
     openShadow,
-    closeModal,
+    closeShadow,
   }
 ```
